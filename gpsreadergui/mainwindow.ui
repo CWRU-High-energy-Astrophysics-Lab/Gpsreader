@@ -1,118 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>GPS_Main</class>
+ <widget class="QMainWindow" name="GPS_Main">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>844</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
+  <property name="styleSheet">
+   <string notr="true">QWidget#mainwidget{
+background-color: rgb(255, 255, 255);}</string>
+  </property>
+  <widget class="QWidget" name="mainwidget">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>390</y>
-      <width>261</width>
-      <height>131</height>
+      <x>30</x>
+      <y>130</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="rawdatawindow">
-       <property name="text">
-        <string>Raw Data</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="sendWindow">
-       <property name="text">
-        <string>Send Command</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">
+border-right: 1px solid;
+border-top: 1px  solid;
+border-left: 1px  solid;
+border-bottom: 1px  solid;
+border-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Computer Time</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>9</y>
-      <width>341</width>
-      <height>561</height>
+      <x>30</x>
+      <y>80</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-        <widget class="QTableView" name="statusWindow"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Satellite Status</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">
+border-right: 1px solid;
+border-top: 1px  solid;
+border-left: 1px  solid;
+border-bottom: 1px  solid;
+border-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>GPS Time</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <widget class="QLabel" name="gps_time">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>89</y>
-      <width>361</width>
-      <height>201</height>
+      <x>190</x>
+      <y>80</y>
+      <width>171</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>GPS Time</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Computer Time</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="gps_time">
-         <property name="text">
-          <string>00000000</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="compterTime">
-         <property name="text">
-          <string>000000</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">
+border-right: 1px solid;
+border-top: 1px  solid;
+border-left: 1px  solid;
+border-bottom: 1px  solid;
+border-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>00000000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="compterTime">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>130</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-right: 1px solid;
+border-top: 1px  solid;
+border-left: 1px  solid;
+border-bottom: 1px  solid;
+border-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>000000</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sendWindow">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>310</y>
+      <width>126</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Send Command</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rawdatawindow">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>310</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Raw Data</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="statusWindow">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>40</y>
+      <width>431</width>
+      <height>538</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>20</y>
+      <width>331</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-right: 1px solid;
+border-top: 1px  solid;
+border-left: 1px  solid;
+border-bottom: 1px  solid;
+border-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Satellite Status</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -120,8 +168,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>844</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

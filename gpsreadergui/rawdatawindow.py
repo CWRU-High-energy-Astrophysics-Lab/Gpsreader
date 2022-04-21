@@ -14,12 +14,11 @@ class GPS_Main(QMainWindow):
         loadUi("welcomescreen.ui", self)
         self.login.clicked.connect(self.gotologin)
         self.create.clicked.connect(self.gotocreate)
-    
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
     main = GPS_Main()
-
+    main.updatetest(100)
 
 
     sys.exit(app.exec_())
