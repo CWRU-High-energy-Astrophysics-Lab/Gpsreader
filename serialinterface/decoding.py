@@ -23,7 +23,7 @@ def Bb(hex):
         s[j] = int(hex[7], 16)
         iddeaas[j] = (i[j], dd[j], e[j], aa[j], s[j])
     return n, iddeaas
-
+#
 def Ha(hex):
     M = int(hex[0], 16)
     d = int(hex[1], 16)
