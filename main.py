@@ -1,3 +1,8 @@
-##from serialinterface import  portrw
-import encoding
-print(encoding.sendBb(1))
+from serialinterface import  portrw,encoding,decoding
+from interface import Interface
+import threading
+
+
+
+if __name__ == '__main__':
+    intface= Interface()
