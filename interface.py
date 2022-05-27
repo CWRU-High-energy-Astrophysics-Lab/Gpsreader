@@ -4,9 +4,10 @@ class Interface():
     def __init__(self):
         self.incomingmsg = []
         self.outgoingmsg = []
-
+        self.stop =False
         self.mutexout = threading.Lock()
         self.mutexin = threading.Lock()
+        self.mutexstop = threading.Lock()
     def addincoming(self,msg):
         self.mutexin.acquire(timeout=.5)
         self.incomingmsg.append(msg)
@@ -35,3 +36,9 @@ class Interface():
             pass
         self.mutexout.release()
         return temp
+
+    def getstop(self)->bool:
+        self.mutexstop.acquire()
+        msg =self.stop
+        self.mutexstop.release()
+        return msg
