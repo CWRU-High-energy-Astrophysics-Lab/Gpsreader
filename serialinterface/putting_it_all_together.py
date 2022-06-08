@@ -1,25 +1,28 @@
-import portrw.py as port
+from serialinterface import portrw as port
+from serialinterface import Sorting_2 as sorting
+from Gpsreader import interface
 from serialinterface import encoding as encoding
-
 import board
 import busio
 import adafruit_ina219
 import time
-import matplotlib.pyplot as plt
 import numpy as np
 
-# startup the ADC
-i2c = busio.I2C(board.SCL, board.SDA)
-ina219 = adafruit_ina219.INA219(i2c)
+def detect_pulse():
+    i2c = busio.I2C(board.SCL, board.SDA)
+    ina219 = adafruit_ina219.INA219(i2c)
 
-# set initial values for the voltage vector and
-trigger = 5
-    if voltages[end] > trigger and voltages[end - 1] < trigger:
+    count = 0
+    trigger = 5
+    voltages = []
+    while (count < 2):
+        voltages.append(ina219.bus_voltage)
+        count += 1
+        time.sleep(.001)
+    if voltages[-1] > trigger and voltages[-2] < trigger:
         encoding.hn(1)
-time.sleep(.01)
 
-x = np.arange(0, 300)
-graph = plt.plot(x, voltages)
-plt.show()
-
-port.serialthread
+while True:
+    message = interface.getincoming()
+    translation = sorting.sort_gps(message)
+    print(translation)

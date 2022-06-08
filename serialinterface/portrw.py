@@ -5,8 +5,8 @@ import serial
 from interface import Interface
 
 
-def serialthread(port, intface:Interface):
-    port= serial.Serial(port)
+def serialthread(bus, intface:Interface):
+    port = serial.Serial(bus)
 
     response = []
     while threading.main_thread().is_alive():
