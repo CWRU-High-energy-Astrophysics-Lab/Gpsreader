@@ -10,4 +10,3 @@ if __name__ == '__main__':
     serialthread= threading.Thread(target=portrw.serialthread,args=(port,intface))
     serialthread.start()
     sortingthread=threading.Thread()
-
