@@ -1,4 +1,5 @@
 import decoding
+from interface import Interface
 def sort_gps_data(array):
     ha_list = []
     hn_list = []
@@ -23,3 +24,7 @@ def sort_gps_data(array):
             elif array[i][4:7] == 0x456B:
                 ek_list.append(array[i])
                 output_list.append(decoding.Ek(array[i]))
+def sortthread(intface:Interface):
+    while not intface.getstop():
+        msg = intface.getincoming()
+        ##do something sorty

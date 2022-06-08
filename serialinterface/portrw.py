@@ -1,18 +1,25 @@
+import threading
+
 import serial
 
+from interface import Interface
 
 
-port= serial.Serial('/dev/ttyUSB0')
+def serialthread(port, intface:Interface):
+    port= serial.Serial(port)
 
-response=[]
-while True:
-       next2byte=port.read(2)
-       if b'@@'== next2byte:
-           print(response)
+    response = []
+    while threading.main_thread().is_alive():
+           next2byte=port.read(2)
+           if b'@@'== next2byte:
+               intface.addincoming(response)
 
-           response=[]
+               response=[]
+               response.append(next2byte)
 
+           else:
+               #print(next2byte.hex())
+               response.append( next2byte.hex())
 
-       else:
-           #print(next2byte.hex())
-           response.append( next2byte.hex())
+           out = intface.getoutgoing()
+           port.write(out)

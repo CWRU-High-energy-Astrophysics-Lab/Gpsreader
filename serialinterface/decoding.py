@@ -76,7 +76,7 @@ def Ha(hex):
     C = hex[168]
     return M, d, yy, h, m, s+ffff*1e-9
 
-    def Hb(hex):
+def Hb(hex):
         M = int(hex[0], 16)
         d = int(hex[1], 16)
         yy = int(hex[2]+hex[3], 16)
@@ -100,7 +100,7 @@ def Ha(hex):
         C = hex[47]
         return M, d, yy, h, m, s+ffff*1e-9
 
-    def Hn(hex):
+def Hn(hex):
         p = int(hex[0], 16)
         y = int(hex[1], 16)
         s = int(hex[2], 16)
@@ -117,5 +117,3 @@ def Ha(hex):
             sffff[j] = (s[j], ffff[j])
         C = hex[76]
         return ('Sawtooth =', n, '   One-Sigma Accuracy =', ee)
-    def decodemsg(hex):
-        pass
