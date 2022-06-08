@@ -1,6 +1,3 @@
-import portrw.py as port
-from serialinterface import encoding as encoding
-
 import board
 import busio
 import adafruit_ina219
@@ -13,13 +10,14 @@ i2c = busio.I2C(board.SCL, board.SDA)
 ina219 = adafruit_ina219.INA219(i2c)
 
 # set initial values for the voltage vector and
-trigger = 5
-    if voltages[end] > trigger and voltages[end - 1] < trigger:
-        encoding.hn(1)
-time.sleep(.01)
-
+count = 0
+voltages = []
+while (count < 300):
+    voltages.append(ina219.bus_voltage)
+    print("Bus Voltage:   {} V".format(ina219.bus_voltage))
+    count += 1
+    time.sleep(.01)
 x = np.arange(0, 300)
+
 graph = plt.plot(x, voltages)
 plt.show()
-
-port.serialthread

@@ -1,3 +1,4 @@
 ##from serialinterface import  portrw
-import encoding
+from serialinterface import encoding
+
 print(encoding.sendBb(1))
