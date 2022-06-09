@@ -1,12 +1,13 @@
 from serialinterface import portrw as port
 from serialinterface import Sorting_2 as sorting
-from Gpsreader import interface
+from gpsmain import interface
 from serialinterface import encoding as encoding
 import board
 import busio
 import adafruit_ina219
 import time
 import numpy as np
+
 
 def detect_pulse():
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -22,7 +23,9 @@ def detect_pulse():
     if voltages[-1] > trigger and voltages[-2] < trigger:
         encoding.hn(1)
 
-while True:
-    message = interface.getincoming()
-    translation = sorting.sort_gps(message)
-    print(translation)
+
+def sortmain(inter: interface.Interface):
+    while True:
+        message = inter.getincoming()
+        translation = sorting.sort_gps(message)
+        print(translation)

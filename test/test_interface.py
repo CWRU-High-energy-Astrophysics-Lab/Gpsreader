@@ -4,7 +4,7 @@ from unittest import TestCase
 
 import numpy as np
 
-from interface import Interface
+from gpsmain.interface import Interface
 
 
 class TestInterface(TestCase):
@@ -14,8 +14,8 @@ class TestInterface(TestCase):
 
         self.out = []
         self.intface = Interface()
-        self.intface.outgoingmsg = list(np.arange(100, 200))
-        self.intface.incomingmsg = list(np.arange(200, 300))
+        self.intface.__outgoingmsg = list(np.arange(100, 200))
+        self.intface.__incomingmsg = list(np.arange(200, 300))
         th1 = threading.Thread(target=self.thread1)
         th2 = threading.Thread(target=self.thread2)
         th3 = threading.Thread(target=self.thread3)

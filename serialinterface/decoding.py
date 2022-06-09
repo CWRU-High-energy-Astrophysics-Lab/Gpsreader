@@ -117,3 +117,7 @@ def Hn(hex):
             sffff[j] = (s[j], ffff[j])
         C = hex[76]
         return ('Sawtooth =', n, '   One-Sigma Accuracy =', ee)
+
+
+def Ek(message): ## this needs to be done
+    return None

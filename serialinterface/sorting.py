@@ -1,30 +1,26 @@
 import decoding
-from interface import Interface
-def sort_gps_data(array):
-    ha_list = []
-    hn_list = []
-    hb_list = []
-    bb_list = []
-    ek_list = []
-    output_list = []
-    for i in range(len(array)):
-        if array[i][0:3] == 0x4040:
-            if array[i][4:7] == 0x4861:
-                ha_list.append(array[i])
-                output_list.append(decoding.Ha(array[i]))
-            elif array[i][4:7] == 0x486E:
-                hn_list.append(array[i])
-                output_list.append(decoding.Hn(array[i]))
-            elif array[i][4:7] == 0x4862:
-                hb_list.append(array[i])
-                output_list.append(decoding.Hb(array[i]))
-            elif array[i][4:7] == 0x4262:
-                bb_list.append(array[i])
-                output_list.append(decoding.Bb(array[i]))
-            elif array[i][4:7] == 0x456B:
-                ek_list.append(array[i])
-                output_list.append(decoding.Ek(array[i]))
+from gpsmain.interface import Interface
+def sort_gps_data(msg:list):
+
+        if msg[0:3] == 0x4040:
+            if msg[4:7] == 0x4861:
+
+                return msg[0:7].extend(decoding.Ha(msg))
+            elif msg[4:7] == 0x486E:
+                return msg[0:7].extend(decoding.Hn(msg[7::]))
+            elif msg[4:7] == 0x4862:
+
+                return msg[0:7].extend(decoding.Hb(msg[7::]))
+            elif msg[4:7] == 0x4262:
+
+                return msg[0:7].extend(decoding.Bb(msg[7::]))
+            elif msg[4:7] == 0x456B:
+               return msg[0:7].extend(decoding.Ek(msg[7::]))
+        else:
+            return msg
+
 def sortthread(intface:Interface):
     while not intface.getstop():
         msg = intface.getincoming()
-        ##do something sorty
+        sortedmsg = sort_gps_data(msg)
+        intface.adddisplaymsg(sortedmsg)

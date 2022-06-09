@@ -1,5 +1,5 @@
-from serialinterface import  portrw,encoding,decoding
-from interface import Interface
+from serialinterface import  portrw
+from gpsmain.interface import Interface
 import threading
 
 

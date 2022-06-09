@@ -2,7 +2,7 @@ import threading
 
 import serial
 
-from interface import Interface
+from gpsmain.interface import Interface
 
 
 def serialthread(bus, intface:Interface):
