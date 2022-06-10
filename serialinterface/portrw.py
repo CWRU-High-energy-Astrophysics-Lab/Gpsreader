@@ -15,11 +15,13 @@ def serialthread(bus, intface:Interface):
                intface.addincoming(response)
 
                response=[]
-               response.append(next2byte)
+
 
            else:
                #print(next2byte.hex())
-               response.append( next2byte.hex())
+               response.append(next2byte[0:2])
+               response.append(next2byte[2::])
+
 
            out = intface.getoutgoing()
            port.write(out)
