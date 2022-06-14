@@ -1,26 +1,20 @@
-import decoding
-from gpsmain.interface import Interface
-def sort_gps_data(msg:list):
+from serialinterface import decodinggps
 
-        if msg[0:3] == 0x4040:
-            if msg[4:7] == 0x4861:
+def sort_gps(message):
+    try:
+        if message[0] == '48':
+            if message[1] == '61':
+                return decodinggps.Ha(message)
+            elif message[1] == '6e':
+                return decodinggps.Hn(message)
+            elif message[1] == '62':
+                return decodinggps.Hb(message)
+        elif message[0] == '42':
+            return decodinggps.Bb(message)
+        elif message[0] == '45':
+            return decodinggps.Ek(message)
 
-                return msg[0:7].extend(decoding.Ha(msg))
-            elif msg[4:7] == 0x486E:
-                return msg[0:7].extend(decoding.Hn(msg[7::]))
-            elif msg[4:7] == 0x4862:
-
-                return msg[0:7].extend(decoding.Hb(msg[7::]))
-            elif msg[4:7] == 0x4262:
-
-                return msg[0:7].extend(decoding.Bb(msg[7::]))
-            elif msg[4:7] == 0x456B:
-               return msg[0:7].extend(decoding.Ek(msg[7::]))
-        else:
-            return msg
-
-def sortthread(intface:Interface):
-    while not intface.getstop():
-        msg = intface.getincoming()
-        sortedmsg = sort_gps_data(msg)
-        intface.adddisplaymsg(sortedmsg)
+    except TypeError:
+        return
+    except IndexError:
+        return
