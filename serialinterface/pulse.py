@@ -17,11 +17,19 @@ def detect_pulse():
         voltages = [0, 0]
         while (count < 2):
             voltages.append(ina219.bus_voltage)
-            timedetected = str(time.time_ns())
+            timedetected = time.time_ns()
             count += 1
             time.sleep(.000001)
+
         if voltages[-1] > trigger and voltages[-2] < trigger:
             print('pulse detected at: ' + str(timedetected))
+            lastpulse = timedetected
+            predictedpulse = lastpulse + 1000000000
+
+        if predictedpulse - timedetected > 1000000010:
+            print('predicted pulse at: ' + str(predictedpulse))
+            predictedpulse += 1000000000
+
 
 
 def sortmain(inter: interface.Interface):
