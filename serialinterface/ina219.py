@@ -9,19 +9,21 @@ import numpy as np
 i2c = busio.I2C(board.SCL, board.SDA)
 ina219 = adafruit_ina219.INA219(i2c)
 
-# while (count < 300):
-#     voltages.append(ina219.bus_voltage)
-#     print("Bus Voltage:   {} V".format(ina219.bus_voltage))
-#     count += 1
-#     time.sleep(.01)
-# time.gmtime(0)
-# x = np.arange(0, 300)
-# graph = plt.plot(x, voltages)
-# plt.show()
+count = 0
+voltages = [0,0]
+while (count < 3000):
+    voltages.append(ina219.bus_voltage)
+    print("Bus Voltage:   {} V".format(ina219.bus_voltage))
+    count += 1
+    time.sleep(.000001)
+time.gmtime(0)
+x = np.arange(0, 3000)
+graph = plt.plot(x, voltages[2::])
+plt.show()
 
 while True:
     count = 0
-    trigger = 4.112
+    trigger = 2.56
     voltages = [0,0]
     while (count < 2):
             voltages.append(ina219.bus_voltage)

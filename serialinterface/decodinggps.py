@@ -27,8 +27,8 @@ def Bb(hex):
     return n #, iddeaas
 #
 def Ha(hex):
-    hex = hex[2::]
     try:
+        hex = hex[2::]
         M = int(hex[0], 16)
         d = int(hex[1], 16)
         yy = int(hex[2]+hex[3], 16)
@@ -78,13 +78,13 @@ def Ha(hex):
         # M_ = int(hex[161], 16)
         # vvvvvv = hex[162]+hex[163]+hex[164]+hex[165]+hex[166]+hex[167]
         # C = hex[-1]
-    except IndexError:
-        print('indexError')
+    except:
         return
     print('Ha message')
     return M, d, yy, h, m, s+ffff*1e-9
 
 def Hb(hex):
+    try:
         hex = hex[2::]
         M = int(hex[0], 16)
         d = int(hex[1], 16)
@@ -107,12 +107,14 @@ def Hb(hex):
 #         rr = format(int(hex[39]+hex[40], 16), '0>42b')
 #         vvvvvv = hex[41]+hex[42]+hex[43]+hex[44]+hex[45]+hex[46]
 #         C = hex[-1]
-        print('Hb message')
-        return M, d, yy, h, m, s+ffff*1e-9
+    except:
+        return
+    print('Hb message')
+    return M, d, yy, h, m, s+ffff*1e-9
 
 def Hn(hex):
-    hex = hex[2::]
     try:
+        hex = hex[2::]
         # p = int(hex[0], 16)
         # y = int(hex[1], 16)
         # s = int(hex[2], 16)
@@ -128,10 +130,9 @@ def Hn(hex):
         #     ffff[j] = int(hex[12+5*j]+hex[13+5*j]+hex[14+5*j]+hex[15+5*j], 16)
         #     sffff[j] = [s[j], ffff[j]]
         # C = hex[-1]
-    except IndexError:
-        n = 0
-        print('indexxxxx')
-            
+
+    except:
+        return
     print('Hn message')
     return ('Sawtooth =', n, '   One-Sigma Accuracy =', ee)
 

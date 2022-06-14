@@ -11,9 +11,11 @@ from serialinterface import sorting
 def detect_pulse():
     i2c = busio.I2C(board.SCL, board.SDA)
     ina219 = adafruit_ina219.INA219(i2c)
+    predictedpulse = 0
+    lastpulse = 0
     while True:
         count = 0
-        trigger = 3.987
+        trigger = 4.12
         voltages = [0, 0]
         while (count < 2):
             voltages.append(ina219.bus_voltage)
@@ -21,12 +23,12 @@ def detect_pulse():
             count += 1
             time.sleep(.000001)
 
-        if voltages[-1] > trigger and voltages[-2] < trigger:
-            print('pulse detected at: ' + str(timedetected))
+        if voltages[-1] > trigger and voltages[-2] < trigger and timedetected - lastpulse > 500000000:
+            print('pulse detected at:  ' + str(timedetected))
             lastpulse = timedetected
             predictedpulse = lastpulse + 1000000000
 
-        if predictedpulse - timedetected > 1000000010:
+        if timedetected - predictedpulse > 100100000:
             print('predicted pulse at: ' + str(predictedpulse))
             predictedpulse += 1000000000
 
