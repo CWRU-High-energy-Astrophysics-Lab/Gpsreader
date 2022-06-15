@@ -8,11 +8,13 @@ class Interface():
         self.__incomingmsg = []
         self.__outgoingmsg = []
         self.__todisplay = []
+        self.__triggercond=False
         self.__stop = False
         self.__mutexout = threading.Lock()
         self.__mutexin = threading.Lock()
         self.__mutexstop = threading.Lock()
         self.__mutexdisplay = threading.Lock()
+        self.__mutextrig = threading.Lock()
 
     def addincoming(self, msg):
         self.__mutexin.acquire(timeout=.5)
@@ -66,3 +68,13 @@ class Interface():
         self.__mutexdisplay.acquire(timeout=.5)
         self.__todisplay.append(msg)
         self.__mutexdisplay.release()
+
+    def getTriggercond(self):
+        self.__mutextrig.acquire(timeout=.5)
+        temp = self.__triggercond
+        self.__mutextrig.release()
+        return temp
+    def setTriggercond(self,trig):
+        self.__mutextrig.acquire(timeout=.5)
+        self.__triggercond=trig
+        self.__mutextrig.release()
