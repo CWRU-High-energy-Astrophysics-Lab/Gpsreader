@@ -43,7 +43,7 @@ def hb(parameter, interface):
 
 def ek(parameter, interface):
     if parameter == 0:
-        interface.addoutgoing(0x4040456B002E0d0a)
+        interface.addoutgoing(b'\x40\x40\x45\x6b\x00\x2e\x0d\x0a')
     if parameter == 1:
-        interface.addoutgoing(0x4040456B012F0d0a)
+        interface.addoutgoing(b'\x40\x40\x45\x6b\x01\x2f\x0d\x0a')
 
