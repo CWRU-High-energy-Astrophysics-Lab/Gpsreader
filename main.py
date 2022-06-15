@@ -12,7 +12,7 @@ if __name__ == '__main__':
     portthread.start()
     datathread = threading.Thread(target = pulse.sortmain, args = (interface,))
     datathread.start()  
-    pulsethread = threading.Thread(target = pulse.detect_pulse)
+    pulsethread = threading.Thread(target = pulse.detect_pulse,args = (interface,))
     pulsethread.start()
     encoding.ha(1, interface)
     encoding.hb(1, interface)
