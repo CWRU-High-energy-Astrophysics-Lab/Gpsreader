@@ -14,11 +14,11 @@ if __name__ == '__main__':
     datathread.start()  
     pulsethread = threading.Thread(target = pulse.detect_pulse,args = (interface,))
     pulsethread.start()
-    encoding.ha(1, interface)
-    encoding.hb(1, interface)
-    encoding.bb(1, interface)
-    while(not interface.getTriggercond()):
-        continue
-    time.sleep(.1)
-    encoding.bb(0, interface)
+#     encoding.ha(1, interface)
+#     encoding.hb(1, interface)
+#     encoding.bb(1, interface)
+#     while(not interface.getTriggercond()):
+#         continue
+#     time.sleep(.1)
+#     encoding.bb(0, interface)
     portthread.join()

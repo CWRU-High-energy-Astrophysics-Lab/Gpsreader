@@ -9,22 +9,28 @@ def serialthread(bus, intface:Interface):
     
     response = []
     while threading.main_thread().is_alive():
-        next2byte = port.read(2)
-        if b'@@' == next2byte:
-            print('serial message recieved at: ' + str(time.time_ns()))
-            #print(response)
-            intface.addincoming(response)
-            response = []
+        byte1 = port.read(1)
+#         print(byte1)
+        if b'@' == byte1:
+            nextbyte = port.read()
+#             print(nextbyte)
+                if nextbyte == b'@':
+                    print('serial message recieved at: ' + str(time.time_ns()))
+                    intface.addincoming(response)
+                    print(response)
+                    response = []
+                else:
+                    response.append( byte1.hex())
+                    response.append( nextbyte.hex())
+                
 
         else:
             #print(next2byte.hex())
-            response.append( next2byte.hex()[0:2])
-            response.append( next2byte.hex()[2::])
+            response.append( byte1.hex())
 
         try:
             out = intface.getoutgoing()
             if out is not None: 
-                print('called bb')
                 port.write(out)
                 port.send_break
         except:

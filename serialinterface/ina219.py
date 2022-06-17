@@ -11,13 +11,13 @@ ina219 = adafruit_ina219.INA219(i2c)
 
 count = 0
 voltages = [0,0]
-while (count < 3000):
+while (count < 30000):
     voltages.append(ina219.bus_voltage)
     print("Bus Voltage:   {} V".format(ina219.bus_voltage))
     count += 1
     time.sleep(.000001)
 time.gmtime(0)
-x = np.arange(0, 3000)
+x = np.arange(0, 30000)
 graph = plt.plot(x, voltages[2::])
 plt.show()
 
